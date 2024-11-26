@@ -5,6 +5,17 @@
   --text-color: #333333;
   --button-width: 150px;
 }
+
+@font-face {
+  font-family: PlusJakarta;
+  src: url("../../../../public/font/PlusJakartaSans-Medium.ttf");
+}
+* {
+  font-family: PlusJakarta;
+}
+input::placeholder {
+  font-size: 14px;
+}
 .f-10 {
   font-size: 10px;
 }
@@ -23,4 +34,16 @@
 }
 .layout-container {
   margin-left: 240px;
+}
+.linear-text {
+  background: linear-gradient(89.78deg, #00f1d2 -0.8%, #5c48c0 90.83%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.chatbox {
+  border: 1px solid #efefef;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }

@@ -16,6 +16,22 @@ const Navbar = () => {
             <p className="mb-0 f-12">Vignesh</p>
             <small className="f-10 c-gray">Account</small>
           </div>
+          <svg
+            className={`w-5 h-5 transition-transform ${
+              false ? "rotate-180" : "rotate-0"
+            }`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
         </div>
       </div>
     </nav>

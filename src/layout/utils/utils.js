@@ -1,6 +1,15 @@
 import { GoHome } from "react-icons/go";
 import { VscRepo } from "react-icons/vsc";
 import * as MdIcons from "react-icons/md";
+import folder from "../../../public/images/sidebarIcon/folder.svg";
+import product from "../../../public/images/sidebarIcon/product.svg";
+import dollar from "../../../public/images/sidebarIcon/dollar.svg";
+import percentage from "../../../public/images/sidebarIcon/percentage-square.svg";
+import message from "../../../public/images/sidebarIcon/message-text.svg";
+import bill from "../../../public/images/sidebarIcon/bill.svg";
+import call from "../../../public/images/sidebarIcon/call-calling.svg";
+import calendar from "../../../public/images/sidebarIcon/menu-board.svg";
+import card from "../../../public/images/sidebarIcon/card.svg";
 
 export const SiderBarData = [
   {
@@ -9,38 +18,61 @@ export const SiderBarData = [
   {
     menu: "My Products",
     path: "#",
-    name: "community management",
+    icon: folder,
     subNav: [
       {
-        menu: "Communities",
-        path: "community",
+        menu: "Chat",
+        path: "chat",
       },
     ],
   },
   {
     menu: "Product Requests",
     path: "#",
-    name: "community management",
+    icon: product,
     subNav: [],
   },
   {
     menu: "Payments",
     path: "#",
-    name: "community management",
+    icon: dollar,
     subNav: [],
   },
   {
     menu: "Transactions",
     path: "#",
-    name: "community management",
+    icon: bill,
     subNav: [],
   },
   {
     menu: "Checks",
-    path: "chat",
+    path: "#",
+    icon: card,
   },
   {
     menu: "Calendar",
     path: "calendar",
+    icon: calendar,
+  },
+  {
+    title: "Information",
+  },
+  {
+    menu: "Special Offers",
+    path: "#",
+    icon: percentage,
+  },
+  {
+    title: "Support",
+  },
+  {
+    menu: "Reach Us",
+    path: "#",
+    icon: call,
+  },
+  {
+    menu: "Chat with us",
+    path: "#",
+    icon: message,
   },
 ];

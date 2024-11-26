@@ -1,22 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SiderBarData } from "./utils/utils";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const location = useLocation();
+
+  // Open the dropdown if a subNav is active based on the current location
+  useEffect(() => {
+    SiderBarData.forEach((item, index) => {
+      if (item.subNav) {
+        const isActive = item.subNav.some(
+          (subnav) => subnav.path === location.pathname
+        );
+        if (isActive) {
+          setOpenIndex(index);
+        }
+      }
+    });
+  }, [location.pathname]);
 
   const toggleDropdown = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <aside className="h-screen bg-black fixed w-60 text-white p-3 pt-5 flex-none">
+    <aside className="h-screen bg-black fixed w-60 f-12 text-white p-3 pt-2 flex-none">
       <nav className="pt-4">
         <ul>
           {SiderBarData.map((item, index) => {
             if (item.title) {
               return (
-                <li key={index} className="mb-1 px-1">
+                <li key={index} className="mb-1 c-gray mt-5 px-1">
                   <small>{item.title}</small>
                 </li>
               );
@@ -32,7 +47,10 @@ const Sidebar = () => {
                     className="hover:bg-gray-700 d-block p-1 rounded"
                     activeClassName="font-bold"
                   >
-                    {item.menu}
+                    <span className="flex gap-2">
+                      <img src={item.icon} alt={`icon ${index + 1}`} />{" "}
+                      {item.menu}
+                    </span>
                   </NavLink>
                 </li>
               );
@@ -40,10 +58,15 @@ const Sidebar = () => {
               return (
                 <li key={index} className="mb-2">
                   <button
-                    className="w-full text-left hover:bg-gray-700 p-1 rounded flex justify-between items-center"
+                    className={`w-full text-left hover:bg-gray-700 p-1 rounded flex justify-between items-center ${
+                      openIndex === index ? "bg-gray-700" : ""
+                    }`}
                     onClick={() => toggleDropdown(index)}
                   >
-                    <span>{item.menu}</span>
+                    <span className="flex gap-2">
+                      <img src={item.icon} alt={`icon ${index + 1}`} />{" "}
+                      {item.menu}
+                    </span>
                     <svg
                       className={`w-4 h-4 transition-transform ${
                         openIndex === index ? "rotate-180" : "rotate-0"

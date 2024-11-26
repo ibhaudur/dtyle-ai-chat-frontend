@@ -12,7 +12,7 @@ const Layout = () => {
         <Sidebar />
         <Container
           className="flex-grow rounded-ss-[16px] layout-container
-         bg-white p-3 mt-4rem"
+         bg-[#FAFFFE] p-3 mt-4rem"
         >
           <Outlet />
         </Container>
