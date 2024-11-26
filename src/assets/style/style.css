@@ -14,7 +14,13 @@
 .c-gray {
   color: #888888;
 }
+.mt-4rem {
+  margin-top: 4rem;
+}
 .active {
   background-color: #374151;
   font-weight: 600;
+}
+.layout-container {
+  margin-left: 240px;
 }

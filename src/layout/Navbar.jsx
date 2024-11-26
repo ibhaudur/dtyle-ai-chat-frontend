@@ -4,7 +4,7 @@ import Avt from "../../public/images/avt.png";
 import { IoNotificationsOutline } from "react-icons/io5";
 const Navbar = () => {
   return (
-    <nav className="h-16 flex justify-between text-white align-items-center px-3">
+    <nav className="h-16 z-[99] flex justify-between fixed w-100 bg-black text-white align-items-center px-3">
       <div>
         <img src={Logo} alt="logo" className="w-28" />
       </div>

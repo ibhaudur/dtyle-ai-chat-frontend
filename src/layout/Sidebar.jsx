@@ -10,8 +10,8 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="h-screen w-60 text-white p-3 flex-none">
-      <nav>
+    <aside className="h-screen bg-black fixed w-60 text-white p-3 pt-5 flex-none">
+      <nav className="pt-4">
         <ul>
           {SiderBarData.map((item, index) => {
             if (item.title) {
