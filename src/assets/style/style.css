@@ -47,3 +47,9 @@ input::placeholder {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
+.send {
+  border-right: 3px solid #02040f !important;
+}
+.res {
+  border-left: 3px solid #082567 !important;
+}
