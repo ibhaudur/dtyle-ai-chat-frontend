@@ -2,21 +2,19 @@ import React, { useState, useRef, useEffect } from "react";
 import audioIcon from "../../../public/images/chat/audio.svg";
 import videoIcon from "../../../public/images/chat/video.svg";
 import { BsRecord2 } from "react-icons/bs";
+import { IoMdSend } from "react-icons/io";
 
 const ChatBox = ({
   message,
-  recordedText,
-  setRecordedText,
   handleInputChange,
   handleKeyPress,
   sendMessage,
 }) => {
-  const [isRecording, setIsRecording] = useState(false); // State to manage recording
-  const recognitionRef = useRef(null); // Ref to manage speech recognition instance
-  const [recordingTime, setRecordingTime] = useState(0); // State to track recording time
-  const timerRef = useRef(null); // Ref to track the timer interval
+  const [isRecording, setIsRecording] = useState(false); 
+  const recognitionRef = useRef(null); 
+  const [recordingTime, setRecordingTime] = useState(0);
+  const timerRef = useRef(null);
 
-  // Format recording time as mm:ss
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = timeInSeconds % 60;
@@ -25,8 +23,6 @@ const ChatBox = ({
       "0"
     )}`;
   };
-
-  // Initialize SpeechRecognition
   const initSpeechRecognition = () => {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -36,11 +32,12 @@ const ChatBox = ({
       recognition.continuous = true; // Keep recognizing until stopped
       recognition.interimResults = false; // Final results only
 
-      recognition.onresult = (event) => {
-        const transcript = Array.from(event.results)
+      recognition.onresult = (e) => {
+        const transcript = Array.from(e.results)
           .map((result) => result[0].transcript)
           .join("");
-        setRecordedText(transcript);
+        const event = { target: { value: transcript } };
+        handleInputChange(event);
       };
 
       recognition.onerror = (err) => {
@@ -91,20 +88,23 @@ const ChatBox = ({
           onKeyPress={handleKeyPress}
           className="flex-1 p-2 rounded-md border-none focus:outline-none"
         />
-        {message ? (
-          <button onClick={sendMessage}>Send</button>
+        {message && !isRecording ? (
+          <button
+            onClick={sendMessage}
+            className="p-2 rounded-full text-white me-2 focus:outline-none bg-[#F7F7F7]"
+          >
+            <IoMdSend className="text-[#58BCFF] text-2xl" />
+          </button>
         ) : (
-          <div className="flex">
+          <div className="flex align-items-center gap-2">
             {isRecording && (
-              <div className="mr-2 text-gray-500">
-                {formatTime(recordingTime)}
-              </div>
+              <div className="text-gray-500">{formatTime(recordingTime)}</div>
             )}
             <button
               onClick={isRecording ? stopRecording : startRecording}
               className={`${
                 isRecording ? "p-2" : "p-3"
-              } rounded-full text-white me-2 focus:outline-none bg-[#F7F7F7]`}
+              } rounded-full text-white focus:outline-none bg-[#F7F7F7]`}
             >
               {isRecording ? (
                 <BsRecord2 className="text-red-500 text-2xl" />

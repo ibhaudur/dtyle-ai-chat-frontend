@@ -25,7 +25,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="h-screen bg-black fixed w-60 f-12 text-white p-3 pt-2 flex-none">
+    <aside className="h-screen bg-black fixed w-60 f-12 d-lg-block d-none text-white p-3 pt-2 flex-none overflow-y-auto">
       <nav className="pt-4">
         <ul>
           {SiderBarData.map((item, index) => {

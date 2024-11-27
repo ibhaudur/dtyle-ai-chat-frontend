@@ -46,12 +46,12 @@ export const SiderBarData = [
   },
   {
     menu: "Checks",
-    path: "#",
+    path: "",
     icon: card,
   },
   {
     menu: "Calendar",
-    path: "calendar",
+    path: "",
     icon: calendar,
   },
   {

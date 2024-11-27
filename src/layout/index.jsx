@@ -10,9 +10,10 @@ const Layout = () => {
       <Navbar />
       <div className="d-flex">
         <Sidebar />
-        <Container
+        <Container fluid
           className="flex-grow rounded-ss-[16px] layout-container
          bg-[#FAFFFE] p-3 mt-4rem"
+          style={{ height: "90vh" }}
         >
           <Outlet />
         </Container>
