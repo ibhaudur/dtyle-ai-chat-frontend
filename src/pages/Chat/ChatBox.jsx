@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import audioIcon from "../../../public/images/chat/audio.svg";
 import videoIcon from "../../../public/images/chat/video.svg";
+import { BsRecord2 } from "react-icons/bs";
 
 const ChatBox = () => {
   const [message, setMessage] = useState(""); // State for the text input
@@ -81,11 +82,17 @@ const ChatBox = () => {
       {/* Voice Record Button */}
       <button
         onClick={isRecording ? stopRecording : startRecording}
-        className={`p-3 rounded-full text-white me-2 focus:outline-none ${
-          isRecording ? "bg-red-500" : "bg-[#F7F7F7]"
+        className={`${
+          isRecording ? "p-2" : "p-3"
+        } rounded-full text-white me-2 focus:outline-none
+         bg-[#F7F7F7]
         }`}
       >
-        {isRecording ? "⏹️" : <img src={audioIcon} alt="i" />}
+        {isRecording ? (
+          <BsRecord2 className="text-red-500 text-2xl" />
+        ) : (
+          <img src={audioIcon} alt="i" />
+        )}
       </button>
       <button
         //         onClick={isRecording ? stopRecording : startRecording}

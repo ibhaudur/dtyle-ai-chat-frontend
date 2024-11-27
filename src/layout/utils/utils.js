@@ -59,7 +59,7 @@ export const SiderBarData = [
   },
   {
     menu: "Special Offers",
-    path: "#",
+    path: "",
     icon: percentage,
   },
   {
@@ -67,12 +67,12 @@ export const SiderBarData = [
   },
   {
     menu: "Reach Us",
-    path: "#",
+    path: "",
     icon: call,
   },
   {
     menu: "Chat with us",
-    path: "#",
+    path: "",
     icon: message,
   },
 ];
