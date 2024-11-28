@@ -9,7 +9,7 @@ import SingleImage from "../../component/Form/SingleImage";
 
 const Chat = () => {
   const [open, setOpen] = useState(false);
-  // const [recordedText, setRecordedText] = useState("");
+  const [videoURL, setVideoURL] = useState(null);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
@@ -39,7 +39,7 @@ const Chat = () => {
     }
   };
   return (
-    <section className="flex justify-center flex-col align-items-center p-3 gap-3">
+    <section className="flex justify-center flex-col align-items-center gap-3">
       <ModalBox title="Upload a Document" open={open} setOpen={setOpen}>
         <div>
           <Row className="mb-3">
@@ -105,21 +105,43 @@ const Chat = () => {
           <small>or</small>
         </>
       )}
-      <Row className="w-100 justify-center mt-2 mb-4 pb-4">
-        <Col md={10}>
-          <Messages
-            message={message}
-            messages={messages}
-            setMessages={setMessages}
-          />
+      <Row className="w-100 justify-end mt-2 mb-4 pb-5">
+        <Col md={8}>
+          <Messages messages={messages} />
         </Col>
+        {messages.length !== 0 && (
+          <Col md={2} className="px-0 d-none d-md-block">
+            <div className="sticky top-20">
+              <small>Chat with</small>
+              <Button
+                className="bg-[#5743BC] w-100 f-12 mt-2 p-2"
+                onClick={() => setOpen(() => !open)}
+              >
+                Document
+              </Button>
+              <small className="c-gray f-9">
+                (Max 10MB - pdf, csv, doc or docx)
+              </small>
+              {videoURL && (
+                <video controls className="mt-4 w-44">
+                  <source src={videoURL} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
+            </div>
+          </Col>
+        )}
       </Row>
       <ChatBox
         message={message}
         handleInputChange={handleInputChange}
         handleKeyPress={handleKeyPress}
         sendMessage={sendMessage}
+        setVideoURL={setVideoURL}
       />
+      <div className="footer">
+
+      </div>
     </section>
   );
 };

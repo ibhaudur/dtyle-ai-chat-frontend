@@ -12,7 +12,7 @@ const Layout = () => {
         <Sidebar />
         <Container fluid
           className="flex-grow rounded-ss-[16px] layout-container
-         bg-[#FAFFFE] p-3 mt-4rem"
+         bg-[#FAFFFE] p-2 mt-4rem"
           style={{ height: "90vh" }}
         >
           <Outlet />

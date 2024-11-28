@@ -3,15 +3,11 @@ import bot from "../../../public/images/chat/bot.svg";
 import user from "../../../public/images/chat/user.svg";
 
 const Messages = ({
-  message,
-  sendMessage,
-  handleInputChange,
-  setMessage,
   messages,
 }) => {
   return (
-    <div className="flex flex-col w-full">
-      <div className="messages-container flex-1 overflow-y-auto mb-4 p-2 rounded-md">
+    <div className="flex flex-col w-full px-2">
+      <div className="messages-container flex-1 overflow-y-auto mb-4 rounded-md">
         {messages.map((msg, index) => (
           <div
             key={index}
