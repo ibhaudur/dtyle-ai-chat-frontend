@@ -190,9 +190,10 @@ const ChatBox = ({
             <video ref={videoRef} autoPlay muted className="w-full h-60" />
             <button
               onClick={stopVideoRecording}
-              className="mt-4 bg-red-500 text-white p-2 rounded"
+              className="p-2 my-3 rounded-full text-white flex gap-2 f-12 align-items-center bg-red-500"
             >
               Stop Recording
+              <BsRecord2 className="text-grey text-2xl" />
             </button>
           </div>
         </div>

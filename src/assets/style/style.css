@@ -94,10 +94,14 @@ input::placeholder {
 .footer {
   height: 80px;
   width: 100%;
-  background: white;
+  background: #fafffe;
   position: fixed;
   bottom: 0;
   z-index: 999;
+}
+.modal-backdrop,
+.modal {
+  z-index: 99999 !important;
 }
 @media (max-width: 991px) {
   .layout-container {

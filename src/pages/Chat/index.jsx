@@ -91,7 +91,7 @@ const Chat = () => {
       {messages.length == 0 && (
         <>
           <img className="mt-2" src={Logo} alt="logo" />
-          <h3 className="text-lg sm:text-2xl md:text-3xl linear-text">
+          <h3 className="text-lg sm:text-2xl md:text-3xl text-center linear-text">
             Power Up Your Productivity with our Ai Agent
           </h3>
           <small className="mt-4">Start with</small>
