@@ -4,9 +4,9 @@ import { Button, Col, Row } from "react-bootstrap";
 import ChatBox from "./ChatBox";
 import ModalBox from "../../component/Modal/ModalBox";
 import Messages from "./Messages";
-import CustomInput from "../../component/Form/CustomInput";
-import SingleImage from "../../component/Form/SingleImage";
 import DocumentForm from "./DocumentForm";
+import axios from "axios";
+import { API_BASE_URL } from "../../config";
 
 const Chat = () => {
   const [open, setOpen] = useState(false);
@@ -18,20 +18,31 @@ const Chat = () => {
     setMessage(e.target.value);
   };
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (message.trim() === "") return;
     setMessages([...messages, { text: message, sender: "user" }]);
-    setMessage("");
-
-    setTimeout(() => {
+    try {
+      const res = await axios.post(
+        `${API_BASE_URL}search-content`,
+        { query: message },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer a9EWMMu9faVgrncjh4WaKpTJZqKfvTO",
+          },
+        }
+      );
+      setMessage("");
       setMessages((prevMessages) => [
         ...prevMessages,
         {
-          text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          text: res.data.output,
           sender: "bot",
         },
       ]);
-    }, 1000);
+    } catch (err) {
+      console.log(err, "error");
+    }
   };
 
   const handleKeyPress = (e) => {

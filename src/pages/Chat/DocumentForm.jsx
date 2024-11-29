@@ -4,6 +4,7 @@ import CustomInput from "../../component/Form/CustomInput";
 import SingleImage from "../../component/Form/SingleImage";
 import axios from "axios";
 import { API_BASE_URL } from "../../config";
+import { toast } from "react-toastify";
 
 const DocumentForm = ({ setOpen }) => {
   const [values, setValues] = useState({});
@@ -32,7 +33,7 @@ const DocumentForm = ({ setOpen }) => {
       );
       setValues({});
       setOpen(false);
-      console.log(res.data);
+      toast.dark(res.data);
     } catch (err) {
       console.log(err, "error");
     }
