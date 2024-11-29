@@ -6,6 +6,7 @@ import ModalBox from "../../component/Modal/ModalBox";
 import Messages from "./Messages";
 import CustomInput from "../../component/Form/CustomInput";
 import SingleImage from "../../component/Form/SingleImage";
+import DocumentForm from "./DocumentForm";
 
 const Chat = () => {
   const [open, setOpen] = useState(false);
@@ -44,33 +45,7 @@ const Chat = () => {
       style={{ minHeight: "80vh" }}
     >
       <ModalBox title="Upload a Document" open={open} setOpen={setOpen}>
-        <div>
-          <Row className="mb-3">
-            <Col sm={6} md={6}>
-              <CustomInput
-                type="text"
-                label="Conversation name"
-                placeholder="Conversation name"
-              />
-            </Col>
-            <Col sm={6} md={6}>
-              <CustomInput
-                type="text"
-                label="Select Document"
-                placeholder="Document name"
-              />
-            </Col>
-            <Col md={12}>
-              <SingleImage label="Upload Document" />
-            </Col>
-          </Row>
-          <Button
-            className="bg-[#5743BC] w-100 f-12 p-2"
-            onClick={() => setOpen(() => !open)}
-          >
-            Document Chat
-          </Button>
-        </div>
+        <DocumentForm setOpen={setOpen} />
       </ModalBox>
       {messages.length == 0 && (
         <>
@@ -93,7 +68,9 @@ const Chat = () => {
               className="border-1 h-8 rounded-s-[10px] p-1 px-2"
               placeholder="Website Url"
             />
-            <Button className="bg-[#5743BC] rounded-s-[0px] h-8 f-12">Fetch</Button>{" "}
+            <Button className="bg-[#5743BC] rounded-s-[0px] h-8 f-12">
+              Fetch
+            </Button>{" "}
           </div>
         </>
       )}

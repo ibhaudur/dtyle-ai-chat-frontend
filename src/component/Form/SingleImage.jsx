@@ -2,19 +2,17 @@ import React, { useState, useEffect, useMemo } from "react";
 import { TbUpload } from "react-icons/tb";
 
 export default function SingleImage(props) {
-  const { label, key_name, resolution } = props;
+  const { label, key_name, resolution, handle } = props;
   const [selectedFiles, setSelectedFiles] = useState([]);
 
   const handleFileClick = () => {
     const fileInput = document.createElement("input");
     fileInput.type = "file";
     fileInput.accept = ".pdf,.csv,.doc,.docx";
-    fileInput.multiple = true; // Allow multiple files
+    fileInput.multiple = true;
 
     fileInput.onchange = () => {
       const files = Array.from(fileInput.files);
-
-      // Check file type and size
       const acceptedFileTypes = [
         "application/pdf",
         "text/csv",
@@ -38,8 +36,8 @@ export default function SingleImage(props) {
         file,
       }));
 
-      let event = { target: { name: key_name, files: validFiles } };
-      // handle(event);
+      let event = { target: { name: key_name, value: validFiles } };
+      handle(event);
       setSelectedFiles((prevFiles) => [...prevFiles, ...blobUrls]);
     };
 
@@ -47,10 +45,13 @@ export default function SingleImage(props) {
   };
 
   const handleDeleteFile = (fileName) => {
-    setSelectedFiles((prevFiles) =>
-      prevFiles.filter((file) => file.name !== fileName)
-    );
+    const validFiles = selectedFiles.filter((file) => file.name !== fileName);
+    const final = validFiles.map(({ file }) => file);
+    setSelectedFiles(validFiles);
+    let event = { target: { name: key_name, value: final } };
+    handle(event);
   };
+
   const mimeToLabel = {
     "application/pdf": "PDF",
     "text/csv": "CSV",
@@ -69,18 +70,18 @@ export default function SingleImage(props) {
     };
   });
 
-  useEffect(() => {
-    if (props?.[key_name]) {
-      const initialFiles = Array.isArray(props?.[key_name])
-        ? props?.[key_name].map((file) => ({
-            name: file.name,
-            url: URL.createObjectURL(file),
-            file,
-          }))
-        : [];
-      setSelectedFiles(initialFiles);
-    }
-  }, [props?.[key_name]]);
+  // useEffect(() => {
+  //   if (props?.[key_name]) {
+  //     const initialFiles = Array.isArray(props?.[key_name])
+  //       ? props?.[key_name].map((file) => ({
+  //           name: file.name,
+  //           url: URL.createObjectURL(file),
+  //           file,
+  //         }))
+  //       : [];
+  //     setSelectedFiles(initialFiles);
+  //   }
+  // }, [props?.[key_name]]);
   return (
     <div className="mb-2">
       <label className="f-12">{label}</label>
