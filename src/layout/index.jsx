@@ -12,7 +12,7 @@ const Layout = () => {
         <Sidebar />
         <Container
           fluid
-          className="flex-grow rounded-ss-[16px] layout-container
+          className="flex-grow rounded-[16px] layout-container
          bg-[#FAFFFE] p-2 mt-4rem"
           style={{ minHeight: "90vh" }}
         >

@@ -39,7 +39,10 @@ const Chat = () => {
     }
   };
   return (
-    <section className="flex justify-center flex-col align-items-center gap-3">
+    <section
+      className="flex justify-center flex-col align-items-center gap-3"
+      style={{ minHeight: "80vh" }}
+    >
       <ModalBox title="Upload a Document" open={open} setOpen={setOpen}>
         <div>
           <Row className="mb-3">
@@ -59,25 +62,6 @@ const Chat = () => {
             </Col>
             <Col md={12}>
               <SingleImage label="Upload Document" />
-            </Col>
-            <Col md={12}>
-              <div>
-                <ul>
-                  {Array.from({ length: 4 }).map((_, index) => (
-                    <li
-                      key={index}
-                      className="flex justify-between border-b-2 p-2"
-                    >
-                      <small>{index + 1}.Document Name</small>
-                      <small>PDF</small>
-                      <small>9MB</small>
-                      <small className="text-red-500 cursor-pointer">
-                        Remove
-                      </small>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </Col>
           </Row>
           <Button
@@ -103,6 +87,14 @@ const Chat = () => {
           </Button>
           <small className="c-gray">(Max 10MB - pdf, csv, doc or docx)</small>
           <small>or</small>
+          <div className="flex align-items-center">
+            <input
+              type="text"
+              className="border-1 h-8 rounded-s-[10px] p-1 px-2"
+              placeholder="Website Url"
+            />
+            <Button className="bg-[#5743BC] rounded-s-[0px] h-8 f-12">Fetch</Button>{" "}
+          </div>
         </>
       )}
       <Row className="w-100 justify-end mt-2 mb-4 pb-5">
@@ -139,9 +131,7 @@ const Chat = () => {
         sendMessage={sendMessage}
         setVideoURL={setVideoURL}
       />
-      <div className="footer">
-
-      </div>
+      <div className="footer"></div>
     </section>
   );
 };

@@ -30,8 +30,11 @@ aside::-webkit-scrollbar {
 input::placeholder {
   font-size: 14px;
 }
-.input-form::placeholder {
+input::placeholder {
   font-size: 12px;
+}
+.chatbox input::placeholder {
+  font-size: 14px;
 }
 .f-9 {
   font-size: 9px;
